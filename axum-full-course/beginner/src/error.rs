@@ -1,4 +1,7 @@
-use axum::{response::{self, Response, IntoResponse}, http::{StatusCode }};
+use axum::{
+    http::StatusCode,
+    response::{self, IntoResponse, Response},
+};
 
 pub type Result<T> = core::result::Result<T, Error>;
 
