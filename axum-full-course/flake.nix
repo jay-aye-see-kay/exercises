@@ -8,7 +8,8 @@
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [ pkg-config openssl ];
+          buildInputs = with pkgs; [ openssl ];
+          nativeBuildInputs = with pkgs; [ pkg-config ];
         };
       });
 }

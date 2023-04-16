@@ -14,5 +14,18 @@ async fn quick_dev() -> anyhow::Result<()> {
         json!({"username":"demo1", "password": "welcome"}),
     );
     req_login.await?.print().await?;
+
+    hc.do_post("/api/tickets", json!({"title": "my ticky"}))
+        .await?
+        .print()
+        .await?;
+
+    hc.do_post("/api/tickets", json!({"title": "my other ticky"}))
+        .await?
+        .print()
+        .await?;
+
+    let tickets = hc.do_get("/api/tickets").await?.print().await?;
+
     Ok(())
 }
